@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+       default-lazy-init="true">
+
+	<!-- 跨站请求伪造 Cross-site request forgery -->
+	<bean name="requestDataValueProcessor"
+	      class="com.wang.so.love.mobile.web.csrf.CSRFRequestDataValueProcessor" />
+
+	<!-- 跨站脚本 Cross-site scripting  -->
+	<bean class="com.wang.so.love.mobile.web.xss.XssPropertyConfigurer" scope="singleton">
+		<property name="location" value="classpath:xss/xss.properties" />
+	</bean>
+	
+	<bean class="com.wang.core.util.ApplicationPropertyConfigurer" scope="singleton">
+		<property name="location" value="classpath:config/application.properties" />
+	</bean>
+	
+	<bean id="propertyConfigurer"
+		class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location" value="classpath:config/conf.properties" />
+	</bean>
+
+	<import resource="classpath*:soLove-service-imp/service-config.xml" />
+	<import resource="classpath:config/datasources.xml" />
+	
+</beans>
