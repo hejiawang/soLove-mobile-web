@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+	<appender name="console" class="ch.qos.logback.core.ConsoleAppender">
+		<encoder>
+			<pattern>[%date{yy-MM-dd HH:mm:ss SSS} %-5level][soLove-mobile-web][%logger{0}][%M:%L] %msg%n </pattern>
+		</encoder>
+	</appender>
+
+	<appender name="rollingFile" class="ch.qos.logback.core.rolling.RollingFileAppender">
+		<file>${pom.log.dir}/soLove-mobile-web.log</file>
+		<rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+			<fileNamePattern>${pom.log.dir}/soLove-mobile-web.%d{yyyy-MM-dd}.log</fileNamePattern>
+		</rollingPolicy>
+		<encoder>
+			<pattern>${pom.log.sys.name} [%date{yy-MM-dd HH:mm:ss SSS} %-5level][%logger{0}][%M:%L] %msg%n </pattern>
+		</encoder>
+	</appender>
+
+	<!-- project default level -->
+	<logger name="com.wang" level="${pom.log.root.level}" />
+
+	<!--log4jdbc -->
+	<logger name="jdbc.sqltiming" level="INFO"/>
+
+	<root level="WARN">
+		<appender-ref ref="console" />
+		<appender-ref ref="rollingFile" />
+	</root>
+</configuration>
