@@ -71,17 +71,6 @@
 		<property name="COOKIE_DOMAIN" value="${pom.cookie.domain}" /> 
 	</bean>
 	
-	<!-- 注入HornetQ连接参数 -->
-	<bean id="hornetqConfUtil" class="com.wang.core.util.hornetq.HornetqConfUtil">
-		<property name="SEND_HOST" value="${pom.hornetq.send.host}" />
-		<property name="SEND_PORT" value="${pom.hornetq.send.port}" />
-		<property name="RECEIVE_HOST" value="${pom.hornetq.receive.host}" />
-		<property name="RECEIVE_PORT" value="${pom.hornetq.receive.port}" />
-		<property name="QUEUE" value="${pom.hornetq.queue}" />
-		<property name="FILE_PATH" value="${pom.hornetq.file.path}" />
-		<property name="FILE_NAME" value="${pom.hornetq.file.name}" />
-	</bean>
-
 	<!-- Interceptor handlers -->
   	<mvc:interceptors>
 		<mvc:interceptor>
@@ -90,11 +79,7 @@
 			<mvc:mapping path="/*/*" />
 			<mvc:mapping path="/*/**.html" />
 			<mvc:mapping path="/*/*/*.html" />
-			<bean class="com.wang.permission.web.interceptor.AuthInterceptor" />
-		</mvc:interceptor>
- 		<mvc:interceptor>
-			<mvc:mapping path="/**" />
-			<bean class="com.wang.permission.web.interceptor.HornetQInterceptor" />
+			<bean class="com.wang.so.love.mobile.web.interceptor.AuthInterceptor" />
 		</mvc:interceptor>
  		<mvc:interceptor>
 			<mvc:mapping path="/**" />
