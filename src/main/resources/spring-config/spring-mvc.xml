@@ -73,14 +73,14 @@
 	
 	<!-- Interceptor handlers -->
   	<mvc:interceptors>
-		<mvc:interceptor>
+		<!-- <mvc:interceptor>
 			<mvc:mapping path="/**.html" />
 			<mvc:mapping path="/*" />
 			<mvc:mapping path="/*/*" />
 			<mvc:mapping path="/*/**.html" />
 			<mvc:mapping path="/*/*/*.html" />
 			<bean class="com.wang.so.love.mobile.web.interceptor.AuthInterceptor" />
-		</mvc:interceptor>
+		</mvc:interceptor> -->
  		<mvc:interceptor>
 			<mvc:mapping path="/**" />
 			<bean class="com.wang.so.love.mobile.web.csrf.CSRFHandlerInterceptor" />

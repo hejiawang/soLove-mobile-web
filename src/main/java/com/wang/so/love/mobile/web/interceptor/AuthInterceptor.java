@@ -27,7 +27,9 @@ public class AuthInterceptor extends HandlerInterceptorAdapter {
 	private final static Set<String> ANONYMOUS_URLS = new HashSet<String>();
 
 	static {
-		//ANONYMOUS_URLS.add("/login");
+		ANONYMOUS_URLS.add("/error.html");
+		ANONYMOUS_URLS.add("/login");
+		ANONYMOUS_URLS.add("/register");
 	}
 
 	@Override

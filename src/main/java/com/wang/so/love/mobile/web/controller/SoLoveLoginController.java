@@ -6,6 +6,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -22,6 +23,7 @@ import com.wang.so.love.service.service.SoLoveLoginService;
  * @author HeJiawang
  * @date   2016.12.02
  */
+@Controller
 public class SoLoveLoginController extends BaseController {
 
 	/**
@@ -110,16 +112,21 @@ public class SoLoveLoginController extends BaseController {
 	 * @return ServiceResult
 	 */
 	@RequestMapping(value = "/register", method = {RequestMethod.POST})
+	@ResponseBody
 	public ServiceResult<SoLoveUserInfoParam> register(HttpServletRequest request, String loginName, String passWord, String rePassWord){
 		ServiceResult<SoLoveUserInfoParam> result = new ServiceResult<SoLoveUserInfoParam>();
-		
 		try {
 			if( !PhoneFormatCheckUtil.isPhoneLegal(loginName) ){
 				result.setMessage("手机号码不正确!");
 				result.setSuccess(false);
 				return result;
 			}
-			if( !passWord.equals(rePassWord) || passWord != rePassWord ){
+			if(StringUtils.isBlank(passWord)){
+				result.setMessage("密码不能为空!");
+				result.setSuccess(false);
+				return result;
+			}
+			if( !passWord.equals(rePassWord) ){
 				result.setMessage("密码不一致!");
 				result.setSuccess(false);
 				return result;
