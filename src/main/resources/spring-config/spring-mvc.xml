@@ -81,10 +81,10 @@
 			<mvc:mapping path="/*/*/*.html" />
 			<bean class="com.wang.so.love.mobile.web.interceptor.AuthInterceptor" />
 		</mvc:interceptor> -->
- 		<mvc:interceptor>
+ 		<!-- <mvc:interceptor>
 			<mvc:mapping path="/**" />
 			<bean class="com.wang.so.love.mobile.web.csrf.CSRFHandlerInterceptor" />
-		</mvc:interceptor>
+		</mvc:interceptor> -->
 		<bean id="webContentInterceptor"
 		      class="org.springframework.web.servlet.mvc.WebContentInterceptor">
 			<property name="cacheSeconds" value="0" />
