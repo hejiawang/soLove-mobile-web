@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.wang.core.ServiceResult;
-import com.wang.so.love.service.entity.SoLoveActivityEntity;
+import com.wang.so.love.service.entity.SoLoveAreaEntity;
 import com.wang.so.love.service.service.SoLoveAreaService;
 
 /**
@@ -45,8 +45,8 @@ public class SoLoveAreaController extends BaseController {
 	 */
 	@RequestMapping(value = "/list", method = {RequestMethod.GET})
 	@ResponseBody
-	public ServiceResult<List<SoLoveActivityEntity>> getAreaListByParentID( HttpServletRequest request, Integer parentID ){
-		ServiceResult<List<SoLoveActivityEntity>> result = new ServiceResult<List<SoLoveActivityEntity>>();
+	public ServiceResult<List<SoLoveAreaEntity>> getAreaListByParentID( HttpServletRequest request, Integer parentID ){
+		ServiceResult<List<SoLoveAreaEntity>> result = new ServiceResult<List<SoLoveAreaEntity>>();
 		try{
 			if( parentID == null ) parentID = 1001;
 			result = soLoveAreaService.getAreaListByParentID(parentID);
